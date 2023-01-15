@@ -47,6 +47,16 @@ class BinarySearchTreeNode:
 
         return elements
 
+    def find_max(self):
+        if self.right is None:
+            return self.data
+        return self.right.find_max()
+
+    def find_min(self):
+        if self.left is None:
+            return self.data
+        return self.left.find_min()
+
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
 
@@ -59,3 +69,4 @@ if __name__ == '__main__':
     letters = ["I", "R", "I", "S", "H", "A", "P", "A", "N", "I", "Z", "A"]
     letters_tree = build_tree(letters)
     print(letters_tree.in_order_traversal())
+    print(letters_tree.search("z"))
