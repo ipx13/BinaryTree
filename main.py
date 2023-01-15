@@ -77,10 +77,12 @@ class BinarySearchTreeNode:
             return self.data
         return self.left.find_min()
 
+    '''
     def calculate_sum(self):
         left_sum = self.left.calculate_sum() if self.left else 0
         right_sum = self.right.calculate_sum() if self.right else 0
         return self.data + left_sum + right_sum
+    '''
 
     def delete(self, val):
         if val < self.data:
@@ -122,22 +124,22 @@ if __name__ == '__main__':
     print("Min, Max, and Sum Functions:")
     print("Min:", letters_tree.find_min())
     print("Max:", letters_tree.find_max())
-    print("Sum:", letters_tree.calculate_sum(), '\n')
+    #print("Sum:", letters_tree.calculate_sum(), '\n')
 
     print("Searching for letters:")
     print('Is letter "z" on the tree?', letters_tree.search("z"))
-    print('Is letter "z" on the tree?', letters_tree.search("z"), '\n')
+    print('Is letter "H" on the tree?', letters_tree.search("H"), '\n')
 
 
     print("Deletion Examples:")
     letters_tree = build_tree(letters)
     letters_tree.delete("S")
-    print('After deleting "S"', letters_tree.in_order_traversal(), '\n')
+    print('After deleting "S"', letters_tree.in_order_traversal())
 
     letters_tree = build_tree(letters)
     letters_tree.delete("H")
-    print('After deleting "H"', letters_tree.in_order_traversal(), '\n')
+    print('After deleting "H"', letters_tree.in_order_traversal())
 
     letters_tree = build_tree(letters)
     letters_tree.delete("j")
-    print('After deleting "j"', letters_tree.in_order_traversal(), '\n')
+    print('After deleting "j"', letters_tree.in_order_traversal())
