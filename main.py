@@ -47,6 +47,26 @@ class BinarySearchTreeNode:
 
         return elements
 
+    def post_order_traversal(self):
+        elements = []
+        if self.left:
+            elements += self.left.post_order_traversal()
+        if self.right:
+            elements += self.right.post_order_traversal()
+
+        elements.append(self.data)
+
+        return elements
+
+    def pre_order_traversal(self):
+        elements = [self.data]
+        if self.left:
+            elements += self.left.pre_order_traversal()
+        if self.right:
+            elements += self.right.pre_order_traversal()
+
+        return elements
+
     def find_max(self):
         if self.right is None:
             return self.data
@@ -56,6 +76,11 @@ class BinarySearchTreeNode:
         if self.left is None:
             return self.data
         return self.left.find_min()
+
+    def calculate_sum(self):
+        left_sum = self.left.calculate_sum() if self.left else 0
+        right_sum = self.right.calculate_sum() if self.right else 0
+        return self.data + left_sum + right_sum
 
     def delete(self, val):
         if val < self.data:
@@ -89,5 +114,12 @@ def build_tree(elements):
 if __name__ == '__main__':
     letters = ["I", "R", "I", "S", "H", "A", "P", "A", "N", "I", "Z", "A"]
     letters_tree = build_tree(letters)
+    print("Building the tree:")
+    print(letters_tree.in_order_traversal(), '\n')
+
+    print("Searching for letters:")
+    print('Is letter "z" on the tree?', letters_tree.search("z"))
+    print('Is letter "z" on the tree?', letters_tree.search("z"), '\n')
+
+    letters_tree.delete("I")
     print(letters_tree.in_order_traversal())
-    print(letters_tree.search("z"))
