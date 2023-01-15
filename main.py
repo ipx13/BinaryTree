@@ -115,11 +115,29 @@ if __name__ == '__main__':
     letters = ["I", "R", "I", "S", "H", "A", "P", "A", "N", "I", "Z", "A"]
     letters_tree = build_tree(letters)
     print("Building the tree:")
-    print(letters_tree.in_order_traversal(), '\n')
+    print("In order traversal:", letters_tree.in_order_traversal())
+    print("Pre order traversal:", letters_tree.pre_order_traversal())
+    print("Post order traversal:", letters_tree.post_order_traversal(), '\n')
+
+    print("Min, Max, and Sum Functions:")
+    print("Min:", letters_tree.find_min())
+    print("Max:", letters_tree.find_max())
+    print("Sum:", letters_tree.calculate_sum(), '\n')
 
     print("Searching for letters:")
     print('Is letter "z" on the tree?', letters_tree.search("z"))
     print('Is letter "z" on the tree?', letters_tree.search("z"), '\n')
 
-    letters_tree.delete("I")
-    print(letters_tree.in_order_traversal())
+
+    print("Deletion Examples:")
+    letters_tree = build_tree(letters)
+    letters_tree.delete("S")
+    print('After deleting "S"', letters_tree.in_order_traversal(), '\n')
+
+    letters_tree = build_tree(letters)
+    letters_tree.delete("H")
+    print('After deleting "H"', letters_tree.in_order_traversal(), '\n')
+
+    letters_tree = build_tree(letters)
+    letters_tree.delete("j")
+    print('After deleting "j"', letters_tree.in_order_traversal(), '\n')
